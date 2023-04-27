@@ -1,0 +1,13 @@
+﻿@page
+@using Friducation.DevOps.Shared;
+@model IndexModel
+@{
+    ViewData["Title"] = "Main";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Friducation DevOps Workshop</h1>
+    <p>
+        5 + 2 = @(CalculationHelper.AddNumbers(5, 2))
+    </p>
+</div>
