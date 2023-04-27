@@ -7,7 +7,7 @@
 
         public static int BuggedFunction()
         {
-            throw new InvalidOperationException("Throwing an exception for no good reason.");
+            //throw new InvalidOperationException("Throwing an exception for no good reason.");
         }
 
     }
