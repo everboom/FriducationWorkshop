@@ -10,7 +10,7 @@
 4. Follow the prompt on the screen to create an organization.
    :warning: The organization name must be unique in the world (so don't use the one in the screenshot) 
 5. ![Create Organization](img/CreateOrganization.png)
-6. Follow the instructions on the page to create a new Project. Make sure it is a Private project. You can name it as you like, for instance: ```Friducation Workshop```.
+6. Follow the instructions on the page to create a new Project. Make sure it is a Private project. Name it: ```Friducation Workshop```.
 
 ## Import a code repository
 Now that we have a project in Azure DevOps, we need to import the code for our website.
@@ -86,7 +86,7 @@ Your page should look like this:
 2. Under the Pipelines section, find the 'Agent Pools' page and navigate there.
 3. Navigate to the 'Default' Agent pool.
 4. Navigate to the 'Agents' tab.
-5. When the agent is up and running, it will look like this:
+5. The teacher will have started the setup of the build agent in the meantime. When this process is complete and the agent is up and running, the page will look like this:
    ![Agent Ready](img/AgentReady.png)
 
 We must now configure our pipeline to make use of the new agent.
@@ -136,13 +136,14 @@ Let's continue configuring the pipeline.
 2. Next, click the Variables tab to set up a new variable.
 3. Press '+ Add' to start adding a new variable. Under name, type ```WebAppName```.
 4. Under value, type a name with the format: ```friducation-[yourname]-[randomnumber]```.
-We will use this value in various places in our pipeline.
+We will use this variable in various places in our pipeline.
 :warning: Only use small letters, dashes ```-``` and numbers in the name.
 
 5. Go back to the Tasks tab in the Release Pipeline Editing page. Your page should look like this:
 ![RenamePipelineStage](img/RenamePipelineStage.png)
 6. Rename the stage from 'Stage 1' to 'Deploy and Publish'.
 7. Then click on the Agent Job and change the value under Agent Pool to 'Default', so that this pipeline can also use our custom pipeline agent.
+8. Click the 'Save' button to save the pipeline.
 
 ## Create Azure Service Connection
 
