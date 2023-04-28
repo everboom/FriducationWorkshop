@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Friducation.DevOps.Shared\Friducation.DevOps.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
 </Project>
