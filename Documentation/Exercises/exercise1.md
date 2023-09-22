@@ -9,7 +9,7 @@
 3. Login with your new hotmail account.
 4. Follow the prompt on the screen to create an organization.
    :warning: The organization name must be unique in the world (so don't use the one in the screenshot) 
-5. ![Create Organization](img/CreateOrganization.png)
+   ![Create Organization](img/CreateOrganization.png)
 6. Follow the instructions on the page to create a new Project. Make sure it is a Private project. Name it: ```Friducation Workshop```.
 
 ## Import a code repository
@@ -24,9 +24,19 @@ Now that we have a project in Azure DevOps, we need to import the code for our w
 3. ![Imported Repository](img/ImportedRepo.png)
 4. Feel free to take a look around the code in the page that opens. You can also find the page through the Project Configuration menu under Repos -> Files.
 
+## Enable Classic Pipelines
+In the next step we will create our own build pipeline. Microsoft is in the process of deprecating classic pipelines, so we need to turn this feature on manually from the organization settings.
+1. Click on the **Organization Settings** button in the bottom left.
+  ![Organization Settings](img/FindOrganizationSettings.png)
+1. In the menu on the left, under the header **Pipelines** find the **Settings** page and navigate to it.
+1. Then under **General** find the following to options and uncheck them, so they look like this:
+  ![Enable Classic Pipelines](img/EnableClassicPipelines.png)
+
+You will now be able to create classic pipelines.
+
 ## Create a build pipeline
 
-We have now imported the code for a simple website into our project.
+In the a previous step we imported the code for a simple website into our project.
 Now we need to automate the build process of this website.
 1. Browse to the Project Configuration page. On the menu in the left, go to Azure Pipelines -> Pipelines. In other words, in the menu you can see the Azure Pipelines section consists of a number of sub-pages, including Pipelines, Releases, Library, etc. Navigate to the top one, called Pipelines.
 ![Create first pipeline](img/CreatingFirstPipeline.png)
@@ -107,7 +117,7 @@ One thing that is missing is that we're not storing the build artifact yet. We n
 1. Navigate back to the pipeline editing page and add another .NET Core task. This one needs 'Publish' for its 'command' setting.
 2. In the new task, copy paste the following text into the 'Arguments' field.
    ```--configuration Release --output $(Build.ArtifactStagingDirectory)```
-3. Finally, add a new task called 'Publish build artifacts'. You can find this task quickly by typing its name into the search bar. 
+3. Finally, add a new task from the marketplace called 'Publish build artifacts'. You can find this task quickly by typing its name into the search bar. 
 4. Press the 'Save and Queue' button, then the 'Save and run' button.
 
 This will ensure that the pipeline produces a build artifact which we can publish to Azure and put our website online. 
@@ -127,7 +137,7 @@ First, we must ensure the release pipeline has access to the original repository
 3. For 'Project', select our project.
 4. For 'Source (repository)', select its Repository.
 5. For 'Default branch', select 'main'.
-6. Under the 'Source alias' field, remove the space so that the value becomes: ```_FriducationWorkshop```.
+6. :warning:Under the 'Source alias' field, remove the space so that the value becomes: ```_FriducationWorkshop```.
 7. Click 'Add' to add the artifact. 
 
 Let's continue configuring the pipeline.
@@ -157,8 +167,8 @@ We must now add a task that will create a new web application in Azure, but to d
 4. Then select 'Service Principal (manual)' and click 'Next'.
 5. For the 'Subscription Id' field, set value to: ```f05495e0-9123-402d-89b6-0c8f63339b73```
 6. For the 'Subscription Name' field, set value to: ```DevOpsWorkshops```
-7. For the 'Service Principal Id', set value to ```7aa0a19b-d7b9-40ff-a2d0-951df955518b```
-8. For the 'Service Principal Key', set value to: ```yUr8Q~MODnppP1e36gzHZnZsF0RjNfP6Mpm90dbg```
+7. For the 'Service Principal Id', set value to ```3e45a629-8654-49f4-87a2-482f529c1996```
+8. For the 'Service Principal Key', set value to: ```9SU8Q~9MJaCJxZbLLInaZrtfAnG-_7f8vfC1KaXF```
 9. For the 'Tenant Id', set value to: ```d9e835f3-6333-4986-ba37-74778153ebc5```
 10. Click 'Verify' to ensure you've set the values correctly.
 11. For 'Service Connection name', set value to: ```Azure Connection```
